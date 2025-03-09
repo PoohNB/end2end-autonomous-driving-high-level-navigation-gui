@@ -1,0 +1,60 @@
+build
+dist
+PathRover.spec
+test
+experiments
+PathRover.bat
+calibration.json
+note.txt
+autoencoder/model/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.pdm-python
+
+# PDM specific files
+.pdm.toml
+.pdm.lock
+__pypackages__/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+pip-wheel-metadata/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and database
+*.log
+*.sqlite3
+*.db
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Pytest / Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+.mypy_cache/
+.pytest_cache/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+*.tmp
+*.bak

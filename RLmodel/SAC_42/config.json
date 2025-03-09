@@ -1,0 +1,722 @@
+{
+    "env": {
+        "observer_config": {
+            "name": "SegVaeActManvHistObserver",
+            "config": {
+                "seg_model_config": {
+                    "name": "HF_mask2Formermodel",
+                    "config": {
+                        "model_repo": "facebook/mask2former-swin-large-mapillary-vistas-semantic",
+                        "fp16": true,
+                        "label_mapping": {
+                            "13": 1,
+                            "7": 1,
+                            "23": 2,
+                            "24": 2,
+                            "52": 3,
+                            "55": 3,
+                            "57": 3,
+                            "20": 4,
+                            "21": 4,
+                            "22": 4,
+                            "19": 4
+                        },
+                        "crop": [
+                            640,
+                            1280
+                        ]
+                    }
+                },
+                "vae_encoder_config": {
+                    "model_path": "autoencoder/model/vae32/best/var_encoder_model.pth",
+                    "latent_dims": 32
+                },
+                "num_img_input": 1,
+                "act_num": 2,
+                "maneuver_num": 1,
+                "hist_len": 12,
+                "skip_frame": 0
+            }
+        },
+        "env_config": {
+            "cam_config_list": [
+                {
+                    "name": "front_camera",
+                    "type": "sensor.camera.rgb",
+                    "attribute": {
+                        "image_size_x": 1280,
+                        "image_size_y": 720,
+                        "fov": 78,
+                        "sensor_tick": 0.001
+                    },
+                    "AttachmentType": 0,
+                    "tag": "obs",
+                    "Location": [
+                        0.98,
+                        0,
+                        1.675
+                    ],
+                    "Rotation": [
+                        -12.5,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "seed": 2024,
+            "carla_setting": {
+                "host": "localhost",
+                "port": 2000,
+                "delta_frame": 0.2
+            },
+            "max_step": 1800,
+            "coach_config": {
+                "scene_configs": [
+                    {
+                        "spawn_points": [
+                            [
+                                -530.12,
+                                -366.21
+                            ],
+                            [
+                                -451.71,
+                                -365.86
+                            ],
+                            [
+                                -350.04,
+                                -342.24
+                            ],
+                            [
+                                -351.9,
+                                -236.73
+                            ],
+                            [
+                                -383.54,
+                                -145.88
+                            ],
+                            [
+                                -570.37,
+                                -176.94
+                            ],
+                            [
+                                -568.62,
+                                -342.71
+                            ]
+                        ],
+                        "cmd_config": {
+                            "name": "DirectionCmd",
+                            "configs": [
+                                {
+                                    "loc": [
+                                        -576.6548461914062,
+                                        -148.419189453125
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "left"
+                                },
+                                {
+                                    "loc": [
+                                        -570.05419921875,
+                                        -366.15301513671875
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "left"
+                                },
+                                {
+                                    "loc": [
+                                        -347.0089111328125,
+                                        -364.6258544921875
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "left"
+                                },
+                                {
+                                    "loc": [
+                                        -350.5668029785156,
+                                        -143.1997528076172
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "left"
+                                }
+                            ]
+                        },
+                        "car_obsc": {
+                            "available_loc": [
+                                [
+                                    -586.89,
+                                    -149.48
+                                ],
+                                [
+                                    -578.4,
+                                    -143.55
+                                ],
+                                [
+                                    -516.97,
+                                    -148.55
+                                ],
+                                [
+                                    -429.61,
+                                    -144.48
+                                ],
+                                [
+                                    -362.6,
+                                    -143.09
+                                ],
+                                [
+                                    -349.92,
+                                    -130.87
+                                ],
+                                [
+                                    -339.92,
+                                    -142.97
+                                ],
+                                [
+                                    -348.53,
+                                    -158.33
+                                ],
+                                [
+                                    -347.94,
+                                    -210.91
+                                ],
+                                [
+                                    -347.48,
+                                    -283.61
+                                ],
+                                [
+                                    -339.68,
+                                    -270.35
+                                ],
+                                [
+                                    -347.94,
+                                    -238.71
+                                ],
+                                [
+                                    -345.97,
+                                    -355.74
+                                ],
+                                [
+                                    -346.78,
+                                    -318.05
+                                ],
+                                [
+                                    -335.61,
+                                    -369.47
+                                ],
+                                [
+                                    -360.51,
+                                    -367.02
+                                ],
+                                [
+                                    -432.28,
+                                    -368.77
+                                ],
+                                [
+                                    -499.29,
+                                    -369.81
+                                ],
+                                [
+                                    -559.55,
+                                    -369.23
+                                ],
+                                [
+                                    -580.61,
+                                    -369.35
+                                ],
+                                [
+                                    -572.0,
+                                    -358.41
+                                ],
+                                [
+                                    -573.16,
+                                    -270.7
+                                ],
+                                [
+                                    -574.44,
+                                    -159.02
+                                ],
+                                [
+                                    -560.6,
+                                    -149.25
+                                ]
+                            ],
+                            "values": 14,
+                            "on_road_ratio": 0.8
+                        },
+                        "ped_obsc": {
+                            "available_loc": [],
+                            "values": 0,
+                            "on_road_ratio": 0.8
+                        },
+                        "rewarder_config": {
+                            "name": "RewardMaskPathV1",
+                            "config": {
+                                "mask_path": "environment/rewardmask/ait_map/ait_fb_inner.png",
+                                "end_point": null,
+                                "value_setting": {
+                                    "reward_scale": 10,
+                                    "max_velo": 2.22,
+                                    "max_angular_velo": 30.5,
+                                    "step_time": 0.2,
+                                    "max_steer": 0.6,
+                                    "minimum_distance": 0.015,
+                                    "mid_steer_range": 0.1,
+                                    "out_of_road_count_limit": 20,
+                                    "staystill_limit": 25
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "spawn_points": [
+                            [
+                                -572.46,
+                                -345.85
+                            ],
+                            [
+                                -509.88,
+                                -369.35
+                            ],
+                            [
+                                -374.35,
+                                -367.26
+                            ],
+                            [
+                                -346.66,
+                                -329.45
+                            ],
+                            [
+                                -348.29,
+                                -174.73
+                            ],
+                            [
+                                -374.7,
+                                -142.97
+                            ],
+                            [
+                                -536.05,
+                                -148.9
+                            ]
+                        ],
+                        "cmd_config": {
+                            "name": "DirectionCmd",
+                            "configs": [
+                                {
+                                    "loc": [
+                                        -576.6548461914062,
+                                        -148.419189453125
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "right"
+                                },
+                                {
+                                    "loc": [
+                                        -570.05419921875,
+                                        -366.15301513671875
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "right"
+                                },
+                                {
+                                    "loc": [
+                                        -347.0089111328125,
+                                        -364.6258544921875
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "right"
+                                },
+                                {
+                                    "loc": [
+                                        -350.5668029785156,
+                                        -143.1997528076172
+                                    ],
+                                    "call_rad": [
+                                        15,
+                                        40
+                                    ],
+                                    "cmd": "right"
+                                }
+                            ]
+                        },
+                        "car_obsc": {
+                            "available_loc": [
+                                [
+                                    -568.16,
+                                    -357.95
+                                ],
+                                [
+                                    -558.97,
+                                    -366.09
+                                ],
+                                [
+                                    -569.32,
+                                    -243.25
+                                ],
+                                [
+                                    -570.48,
+                                    -159.14
+                                ],
+                                [
+                                    -561.41,
+                                    -151.93
+                                ],
+                                [
+                                    -599.68,
+                                    -152.16
+                                ],
+                                [
+                                    -581.77,
+                                    -142.5
+                                ],
+                                [
+                                    -509.76,
+                                    -151.0
+                                ],
+                                [
+                                    -451.59,
+                                    -148.55
+                                ],
+                                [
+                                    -362.83,
+                                    -145.76
+                                ],
+                                [
+                                    -352.13,
+                                    -159.02
+                                ],
+                                [
+                                    -353.76,
+                                    -130.76
+                                ],
+                                [
+                                    -339.45,
+                                    -145.41
+                                ],
+                                [
+                                    -352.02,
+                                    -237.31
+                                ],
+                                [
+                                    -351.2,
+                                    -285.24
+                                ],
+                                [
+                                    -350.39,
+                                    -324.21
+                                ],
+                                [
+                                    -349.57,
+                                    -357.48
+                                ],
+                                [
+                                    -359.34,
+                                    -363.77
+                                ],
+                                [
+                                    -440.78,
+                                    -365.51
+                                ],
+                                [
+                                    -505.8,
+                                    -366.56
+                                ],
+                                [
+                                    -593.75,
+                                    -366.56
+                                ],
+                                [
+                                    -331.19,
+                                    -366.09
+                                ],
+                                [
+                                    -337.59,
+                                    -265.93
+                                ]
+                            ],
+                            "values": 14,
+                            "on_road_ratio": 0.8
+                        },
+                        "ped_obsc": {
+                            "available_loc": [],
+                            "values": 0,
+                            "on_road_ratio": 0.8
+                        },
+                        "rewarder_config": {
+                            "name": "RewardMaskPathV1",
+                            "config": {
+                                "mask_path": "environment/rewardmask/ait_map/ait_fb_outer.png",
+                                "end_point": null,
+                                "value_setting": {
+                                    "reward_scale": 10,
+                                    "max_velo": 2.22,
+                                    "max_angular_velo": 30.5,
+                                    "step_time": 0.2,
+                                    "max_steer": 0.6,
+                                    "minimum_distance": 0.015,
+                                    "mid_steer_range": 0.1,
+                                    "out_of_road_count_limit": 20,
+                                    "staystill_limit": 25
+                                }
+                            }
+                        }
+                    }
+                ],
+                "parking_area": [
+                    {
+                        "Location": [
+                            -526.4,
+                            -144.25,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -531.51,
+                            -144.25,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -536.4,
+                            -144.37,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -544.08,
+                            -144.37,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -548.85,
+                            -144.6,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -553.73,
+                            -144.37,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -558.5,
+                            -144.6,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -568.27,
+                            -144.72,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -578.2,
+                            -160.8,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            219,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -578.2,
+                            -164.0,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            219,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -585.5,
+                            -156.1,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -571.1,
+                            -385.0,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            90,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -448.0,
+                            -382.8,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    },
+                    {
+                        "Location": [
+                            -454.8,
+                            -382.8,
+                            0.2
+                        ],
+                        "Rotation": [
+                            0,
+                            270,
+                            0
+                        ]
+                    }
+                ],
+                "ped_area": [
+                    [
+                        -500.33731049714527,
+                        -324.5619847214683
+                    ],
+                    [
+                        -452.641821702951,
+                        -286.9872459884811
+                    ]
+                ],
+                "cmd_guide": {
+                    "cmd_dict": {
+                        "forward": [
+                            0
+                        ],
+                        "left": [
+                            1
+                        ],
+                        "right": [
+                            2
+                        ]
+                    },
+                    "default_cmd": "forward"
+                }
+            },
+            "discrete_actions": null
+        },
+        "actionwrapper": {
+            "name": "LimitAction",
+            "config": {
+                "throttle_range": [
+                    0.0,
+                    0.4
+                ],
+                "max_steer": 0.6,
+                "activate_filter_8bit": true
+            }
+        }
+    },
+    "algorithm": {
+        "method": "SAC",
+        "algo_config": {
+            "policy": "MlpPolicy",
+            "learning_rate": "exp_schedule(0.0001, 5e-07, 2)",
+            "buffer_size": 300000,
+            "batch_size": 256,
+            "ent_coef": "auto",
+            "gamma": 0.98,
+            "tau": 0.02,
+            "train_freq": 64,
+            "gradient_steps": 64,
+            "learning_starts": 10000,
+            "use_sde": true,
+            "policy_kwargs": {
+                "log_std_init": -3,
+                "net_arch": [
+                    500,
+                    300
+                ]
+            }
+        },
+        "seed": 2024
+    },
+    "train_config": {
+        "total_timesteps": 1500000,
+        "num_checkpoints": 15,
+        "save_path": "RLmodel"
+    }
+}

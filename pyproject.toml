@@ -1,0 +1,32 @@
+[project]
+name = "end2end-autonomous-driving-high-level-navigation-gui"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Nattabude", email = "nattabude.t2021@gmail.com"},
+]
+dependencies = [
+    "stable-baselines3",
+    "sb3-contrib",
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "opencv-python-headless",
+    "transformers",
+    "scipy",
+    "pyserial",
+    "pyqt5-qt5==5.15.2",
+    "PyQt5",
+]
+requires-python = "==3.9.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[[tool.pdm.source]]
+name = "784f06"
+url = "https://download.pytorch.org/whl/cu118"
+verify_ssl = true
