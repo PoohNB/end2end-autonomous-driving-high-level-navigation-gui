@@ -78,11 +78,11 @@ class HFsegWrapper(SegmodelWrapper):
         else:
             self.images = images
 
-        with torch.no_grad():
+        with torch.no_grad(),torch.autocast(device_type=self.device.type, dtype=self.torch_dtype):
             if self.custom_processor is None:
-                inputs = self.processor(self.images,return_tensors="pt").to(self.device,self.torch_dtype)
+                inputs = self.processor(self.images,return_tensors="pt").to(self.device)
             else:
-                inputs = {'pixel_values':self.processor(torch.stack([self.processor(img) for img in self.images],axis=0))}.to(self.device,self.torch_dtype)
+                inputs = {'pixel_values':self.processor(torch.stack([self.processor(img) for img in self.images],axis=0))}.to(self.device)
 
             self.outputs = self.model(**inputs)
 
@@ -106,8 +106,7 @@ class HF_segFormermodel(HFsegWrapper):
         return: preprocess, model
         """
         processor = self.custom_processor or SegformerImageProcessor.from_pretrained(repo)
-        model = SegformerForSemanticSegmentation.from_pretrained(repo,torch_dtype=self.torch_dtype,
-                                    use_safetensors=True).to(self.device)
+        model = SegformerForSemanticSegmentation.from_pretrained(repo,use_safetensors=True).to(self.device)
         return processor,model
 
     def _get_segmaps(self, preds):
@@ -134,8 +133,7 @@ class HF_mask2Formermodel(HFsegWrapper):
         """
         processor = AutoImageProcessor.from_pretrained(model_repo) \
                                     if self.custom_processor is None else self.custom_processor
-        model = Mask2FormerForUniversalSegmentation.from_pretrained(model_repo,  torch_dtype=self.torch_dtype,
-                                    use_safetensors=True).to(self.device)
+        model = Mask2FormerForUniversalSegmentation.from_pretrained(model_repo, use_safetensors=True).to(self.device)
         return processor,model
 
     def _get_segmaps(self, preds):

@@ -23,6 +23,7 @@ class VencoderWrapper:
         print(f"using {self.device}")
         self.latent_dims = latent_dims 
         self.model = Encoder(latent_dims=self.latent_dims)
+
         self.model.load(model_path)
         self.model.eval()
 

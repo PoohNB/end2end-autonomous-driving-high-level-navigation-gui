@@ -58,3 +58,5 @@ htmlcov/
 # Temporary files
 *.tmp
 *.bak
+
+.venv/

@@ -1,17 +1,19 @@
 from huggingface_hub import hf_hub_download, HfApi
 import os
 
-def get_model(repo_id: str = 'NaTaB/VAE-AV', modelname: str = "vae32", save_dir: str = "autoencoder/model"):
+#'../autoencoder/model/vae32/best/var_encoder_model.pth'
+
+def get_model(repo_id: str = 'NaTaB/VAE-AV-32', save_dir: str = "autoencoder/model/vae32/best"):
     api = HfApi()
     
     # List all files in the repository
     files = api.list_repo_files(repo_id)
 
     # Filter files that are inside the modelname folder
-    model_files = [f for f in files if f.startswith(f"{modelname}/")]
+    model_files = [f for f in files if f.endswith(".pth")]
 
     if not model_files:
-        print(f"No models found in {repo_id} under {modelname}/")
+        print(f"No models found in {repo_id} ")
         return
 
     os.makedirs(save_dir, exist_ok=True)  # Ensure the save directory exists
@@ -29,6 +31,6 @@ def get_model(repo_id: str = 'NaTaB/VAE-AV', modelname: str = "vae32", save_dir:
     return downloaded_paths  # Return the list of downloaded files
 
 # Example usage
-if '__name___' == "__main__":
-    get_model(repo_id="NaTaB/VAE-AV", modelname="vae32", save_dir="../model")
+
+get_model()
 
